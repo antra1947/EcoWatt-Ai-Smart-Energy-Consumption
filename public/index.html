@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoWatt AI - Professional Energy Management Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoWatt AI</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-section="prediction">
+                    <i class="fas fa-brain"></i>
+                    <span>AI Prediction</span>
+                </li>
+                <li class="nav-item" data-section="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <h1 id="section-title">Energy Dashboard</h1>
+                    <p id="section-subtitle">Real-time energy consumption monitoring and AI-powered insights</p>
+                </div>
+                <div class="header-right">
+                    <div class="status-indicator">
+                        <span class="status-dot online"></span>
+                        <span>AI Model Active</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="dashboard-section" class="content-section active">
+                <div class="dashboard-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Current Consumption</h3>
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="metric-value" id="current-consumption">0 kWh</div>
+                        <div class="metric-change positive">+2.3% from yesterday</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Monthly Bill</h3>
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="metric-value" id="monthly-bill">Rs.0</div>
+                        <div class="metric-change negative">-5.2% from last month</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Carbon Footprint</h3>
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="metric-value" id="carbon-footprint">0 kg CO₂</div>
+                        <div class="metric-change negative">-8.1% reduction</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Efficiency Score</h3>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="metric-value" id="efficiency-score">0%</div>
+                        <div class="metric-change positive">+12% improvement</div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container large">
+                        <h3>Energy Consumption Trends</h3>
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Appliance Breakdown</h3>
+                        <canvas id="applianceChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="prediction-section" class="content-section">
+                <div class="prediction-container">
+                    <div class="prediction-form-card">
+                        <h2>AI-Powered Energy Prediction</h2>
+                        <form id="advancedPredictionForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="location">Location</label>
+                                    <input type="text" id="location" name="location" placeholder="Enter your city" required>
+                                    <small>Used for weather-based adjustments</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="householdSize">Household Size</label>
+                                    <select id="householdSize" name="householdSize" required>
+                                        <option value="1">1 person</option>
+                                        <option value="2" selected>2 people</option>
+                                        <option value="3">3 people</option>
+                                        <option value="4">4 people</option>
+                                        <option value="5">5+ people</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="currentUsage">Current Monthly Usage (kWh)</label>
+                                    <input type="number" id="currentUsage" name="currentUsage" placeholder="e.g., 500" min="0">
+                                    <small>Leave blank if unknown</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="homeType">Home Type</label>
+                                    <select id="homeType" name="homeType">
+                                        <option value="apartment">Apartment</option>
+                                        <option value="house" selected>House</option>
+                                        <option value="condo">Condo</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Your Appliances</label>
+                                <div class="appliance-grid">
+                                    <label class="appliance-item">
+                                        <input type="checkbox" name="appliances" value="air_conditioner">
+                                        <div class="appliance-icon"><i class="fas fa-snowflake"></i></div>
+                                        <span>Air Conditioner</span>
+                                    </label>
+                                    <label class="appliance-item">
+                                        <input type="checkbox" name="appliances" value="heater">
+                                        <div class="appliance-icon"><i class="fas fa-fire"></i></div>
+                                        <span>Heater</span>
+                                    </label>
+                                    <label class="appliance-item">
+                                        <input type="checkbox" name="appliances" value="refrigerator" checked>
+                                        <div class="appliance-icon"><i class="fas fa-cube"></i></div>
+                                        <span>Refrigerator</span>
+                                    </label>
+                                    <label class="appliance-item">
+                                        <input type="checkbox" name="appliances" value="washing_machine">
+                                        <div class="appliance-icon"><i class="fas fa-tshirt"></i></div>
+                                        <span>Washing Machine</span>
+                                    </label>
+                                    <label class="appliance-item">
+                                        <input type="checkbox" name="appliances" value="dishwasher">
+                                        <div class="appliance-icon"><i class="fas fa-utensils"></i></div>
+                                        <span>Dishwasher</span>
+                                    </label>
+                                    <label class="appliance-item">
+                                        <input type="checkbox" name="appliances" value="tv" checked>
+                                        <div class="appliance-icon"><i class="fas fa-tv"></i></div>
+                                        <span>Television</span>
+                                    </label>
+                                    <label class="appliance-item">
+                                        <input type="checkbox" name="appliances" value="computer" checked>
+                                        <div class="appliance-icon"><i class="fas fa-laptop"></i></div>
+                                        <span>Computer</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="predict-btn">
+                                <i class="fas fa-brain"></i>
+                                Generate AI Prediction
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="prediction-results" id="predictionResults" style="display: none;">
+                        <h2>Prediction Results</h2>
+                        
+                        <div class="results-grid">
+                            <div class="result-card primary">
+                                <h3>Monthly Consumption</h3>
+                                <div class="result-value" id="consumptionResult">0 kWh</div>
+                                <div class="confidence">Confidence: <span id="confidenceLevel">0%</span></div>
+                            </div>
+                            
+                            <div class="result-card">
+                                <h3>Estimated Bill</h3>
+                                <div class="result-value" id="billResult">Rs.0</div>
+                                <div class="sub-info">Based on regional rates</div>
+                            </div>
+                            
+                            <div class="result-card">
+                                <h3>Potential Savings</h3>
+                                <div class="result-value" id="savingsResult">Rs.0</div>
+                                <div class="sub-info">Monthly optimization</div>
+                            </div>
+                            
+                            <div class="result-card">
+                                <h3>Carbon Impact</h3>
+                                <div class="result-value" id="carbonResult">0 kg CO₂</div>
+                                <div class="sub-info">Monthly emissions</div>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <h3>12-Month Forecast</h3>
+                            <canvas id="forecastChart"></canvas>
+                        </div>
+
+                        <div class="recommendations">
+                            <h3><i class="fas fa-lightbulb"></i> Intelligent Recommendations</h3>
+                            <div id="recommendationsList" class="recommendations-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="analytics-section" class="content-section">
+                <div class="analytics-container">
+                    <h2>Advanced Analytics</h2>
+                    <div class="analytics-grid">
+                        <div class="chart-container">
+                            <h3>Hourly Usage Pattern</h3>
+                            <canvas id="hourlyChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Efficiency Comparison</h3>
+                            <canvas id="efficiencyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+            <section id="dashboard-section" class="content-section active">
+                <div class="dashboard-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Current Consumption</h3>
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="metric-value" id="current-consumption">0 kWh</div>
+                        <div class="metric-change positive">+2.3% from yesterday</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Monthly Bill</h3>
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="metric-value" id="monthly-bill">Rs.0</div>
+                        <div class="metric-change negative">-5.2% from last month</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Carbon Footprint</h3>
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="metric-value" id="carbon-footprint">0 kg CO₂</div>
+                        <div class="metric-change negative">-8.1% reduction</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Efficiency Score</h3>
+                            <i class="fas fa-star"></i>
+                        </div>
+             
