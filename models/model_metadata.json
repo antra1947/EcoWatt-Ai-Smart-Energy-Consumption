@@ -1,0 +1,36 @@
+{
+  "model_type": "RandomForestRegressor",
+  "features": [
+    "household_size",
+    "temperature",
+    "humidity",
+    "num_appliances",
+    "season"
+  ],
+  "mae": 52.88453222067758,
+  "r2_score": 0.9822981067767266,
+  "feature_importance": [
+    {
+      "feature": "household_size",
+      "importance": 0.8189611668032991
+    },
+    {
+      "feature": "season",
+      "importance": 0.14254469456723057
+    },
+    {
+      "feature": "temperature",
+      "importance": 0.02316077133702302
+    },
+    {
+      "feature": "num_appliances",
+      "importance": 0.008819470449523881
+    },
+    {
+      "feature": "humidity",
+      "importance": 0.0065138968429233335
+    }
+  ],
+  "training_samples": 800,
+  "test_samples": 200
+}

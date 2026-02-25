@@ -1,0 +1,22 @@
+{
+  "regional_averages": {
+    "california": 567,
+    "texas": 1200,
+    "punjab": 420,
+    "delhi": 380,
+    "default": 650
+  },
+  "seasonal_trends": {
+    "spring": 0.9,
+    "summer": 1.35,
+    "autumn": 0.95,
+    "winter": 1.25
+  },
+  "peak_hours": [18, 19, 20, 21],
+  "efficiency_benchmarks": {
+    "excellent": 400,
+    "good": 600,
+    "average": 800,
+    "poor": 1200
+  }
+}

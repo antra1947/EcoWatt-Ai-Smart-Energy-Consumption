@@ -1,0 +1,17 @@
+{
+  "model_type": "Advanced Random Forest",
+  "version": "2.0",
+  "features": [
+    "household_size",
+    "temperature",
+    "humidity",
+    "num_appliances",
+    "season"
+  ],
+  "performance": {
+    "mae": 48.06078883086334,
+    "r2_score": 0.9848927128061087,
+    "accuracy_percentage": 98.48927128061086
+  },
+  "training_samples": 2400
+}
